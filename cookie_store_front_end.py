@@ -19,12 +19,14 @@ import cookie_store_back_end
 newCookie = cookie_store_back_end.Cookie()
 
 total = sg.Text("Your total is: $0.00")
+yes_btn = sg.Button("Yes")
+no_btn = sg.Button("No")
 # Create the windows layout
 layout = [[sg.Text("Which type of cookie would you like:")],
           [sg.Text("Chocolate Chip (C), Oatmeal Raisin (O), or Sugar (S)?")],
           [sg.Button('Chocolate Chip'), sg.Button('Oatmeal Raisin'), sg.Button('Sugar')],
           [sg.Text("Would you like ice cream on that?")],
-          [sg.Button('Yes'), sg.Button('No')],
+          [yes_btn, no_btn],
           [total],
           [sg.Button('Generate Recipt')]]
 
@@ -55,9 +57,13 @@ while True:
     elif event == 'Yes':
         newCookie.add_ice_cream("Yes")
         total.update("Your total is: $" + str(newCookie.price))
+        yes_btn.update(disabled=True)
+        no_btn.update(disabled=True)
     elif event == 'No':
         newCookie.add_ice_cream("No")
         total.update("Your total is: $" + str(newCookie.price))
+        yes_btn.update(disabled=True)
+        no_btn.update(disabled=True)
 
 # Old Non GUI Version
 # # Selecting Cookie Type

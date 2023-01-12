@@ -39,7 +39,7 @@ class Cookie:
         elif self.type == "Sugar":
             self.price = 1.00
         else:
-            self.price = 0.0
+            self.price = 0.00
 
     def add_ice_cream(self, userSelection):
         # Updating Cookie Price based on Ice Cream
@@ -47,7 +47,7 @@ class Cookie:
             self.ice_cream_status = True
             self.price += 0.50
             print("Your total is: $" + str(self.price))
-            
+
     def generate_recipt(self):
         csv.writer(open("recipt.csv", "w")).writerow(["Selections", "Price"])
         csv.writer(open("recipt.csv", "a")).writerow([self.type, self.price])
